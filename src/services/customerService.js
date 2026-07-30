@@ -40,6 +40,13 @@ export const updateCustomerService = async (id, data) => {
 };
 
 /**
+ * Delete Customer
+ */
+export const deleteCustomerService = async (id) => {
+  return await Customer.findByIdAndDelete(id);
+};
+
+/**
  * Get Customer Profile
  */
 export const getCustomerProfileService = async (customerId) => {

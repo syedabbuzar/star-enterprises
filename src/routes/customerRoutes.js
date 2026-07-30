@@ -4,8 +4,9 @@ import {
   getCustomerProfile,
   createCustomer,
   updateCustomer,
+  deleteCustomer,
 } from "../controllers/customerController.js";
-
+import Middlware from "../Middleware/auth.js";
 const router = express.Router();
 
 /**
@@ -31,5 +32,8 @@ router.post("/", createCustomer);
  * PUT /customers/:id
  */
 router.put("/:id", updateCustomer);
+//delete Routes
+router.delete("/delete/:id", Middlware, deleteCustomer);
+
 
 export default router;

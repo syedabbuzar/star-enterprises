@@ -2,6 +2,7 @@ import {
   getAllCustomersService,
   createCustomerService,
   updateCustomerService,
+  deleteCustomerService,
   getCustomerProfileService,
 } from "../services/customerService.js";
 
@@ -59,7 +60,6 @@ export const createCustomer = async (req, res) => {
  * Update Customer
  * PUT /customers/:id
  */
-
 export const updateCustomer = async (req, res) => {
   try {
     const { id } = req.params;
@@ -84,6 +84,38 @@ export const updateCustomer = async (req, res) => {
     return res.status(500).json({
       success: false,
       message: "Failed to update customer.",
+      error: error.message,
+    });
+  }
+};
+
+/**
+ * Delete Customer
+ * DELETE /customers/:id
+ */
+export const deleteCustomer = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const customer = await deleteCustomerService(id);
+
+    if (!customer) {
+      return res.status(404).json({
+        success: false,
+        message: "Customer not found.",
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      message: "Customer deleted successfully.",
+    });
+  } catch (error) {
+    console.error("Delete Customer Error:", error);
+
+    return res.status(500).json({
+      success: false,
+      message: "Failed to delete customer.",
       error: error.message,
     });
   }
