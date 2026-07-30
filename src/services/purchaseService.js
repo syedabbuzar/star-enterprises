@@ -22,6 +22,10 @@ export const createPurchaseService = async (data) => {
     sgst: data.sgst,
     igst: data.igst,
     gstAmount: data.gstAmount,
+
+    // Bill Discount
+    discount: data.discount,
+
     total: data.total,
     narration: data.narration,
     remarks: data.remarks,
@@ -41,6 +45,10 @@ export const createPurchaseService = async (data) => {
       pieces: item.pieces,
       boxSize: item.boxSize,
       rate: item.rate,
+
+      // Item Discount
+      discount: item.discount,
+
       taxable: item.taxable,
       gstAmount: item.gstAmount,
       amount: item.amount,
@@ -102,6 +110,10 @@ export const updatePurchaseService = async (id, data) => {
       sgst: data.sgst,
       igst: data.igst,
       gstAmount: data.gstAmount,
+
+      // Bill Discount
+      discount: data.discount,
+
       total: data.total,
       narration: data.narration,
       remarks: data.remarks,
@@ -136,6 +148,10 @@ export const updatePurchaseService = async (id, data) => {
       pieces: item.pieces,
       boxSize: item.boxSize,
       rate: item.rate,
+
+      // Item Discount
+      discount: item.discount,
+
       taxable: item.taxable,
       gstAmount: item.gstAmount,
       amount: item.amount,

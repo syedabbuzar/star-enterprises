@@ -86,6 +86,14 @@ const purchaseSchema = new mongoose.Schema(
       default: 0,
     },
 
+    // =========================
+    // Bill Discount
+    // =========================
+    discount: {
+      type: Number,
+      default: 0,
+    },
+
     total: {
       type: Number,
       required: true,
@@ -104,7 +112,7 @@ const purchaseSchema = new mongoose.Schema(
     note: {
       type: String,
       default: "",
-    }
+    },
   },
   {
     timestamps: true,

@@ -58,6 +58,14 @@ const purchaseItemSchema = new mongoose.Schema(
       required: true,
     },
 
+    // ==========================
+    // Item Discount
+    // ==========================
+    discount: {
+      type: Number,
+      default: 0,
+    },
+
     taxable: {
       type: Number,
       default: 0,
@@ -71,7 +79,7 @@ const purchaseItemSchema = new mongoose.Schema(
     amount: {
       type: Number,
       required: true,
-    }
+    },
   },
   {
     timestamps: true,
