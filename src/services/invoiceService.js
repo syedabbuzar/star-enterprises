@@ -212,17 +212,18 @@ export const deleteInvoiceService = async (id) => {
 
   if (!invoice) return null;
 
-  invoice.status = "deleted";
-
-  await invoice.save();
-
+  // Delete all invoice items
   await InvoiceItem.deleteMany({
-    invoiceId: id,
+    invoiceId: invoice._id,
   });
 
+  // Delete stock ledger entries created by this invoice
   await StockLedger.deleteMany({
     note: `Invoice : ${invoice.number}`,
   });
+
+  // Permanently delete invoice
+  await Invoice.findByIdAndDelete(invoice._id);
 
   return invoice;
 };
